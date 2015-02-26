@@ -1,0 +1,95 @@
+Notes on Project
+
+Spent a while trying to use the twitter API straight
+It was frustrating, and my project was getting very bloated very fast
+started from scratch, used Twitter4J -- allowed easy connection to streaming
+
+
+Graphs to make
+
+0) | Total # connections per hour, users per hour
+	break it down by what we had to discard
+	complex (complete link) vs half-link
+	#users with geolocation -- use users and users_weekend as a base set and sample set!!!
+1) | User distance change vs number of ocurrences 
+2) | link distance vs number of occurrences
+3) Try to find strongly connected components
+4) link distance in different regions vs number of occurrences
+5) link distance vs number of followers vs number of occurrences
+6) Average Distance per Hour
+
+7) Tweets per person (out degree)
+8) Unique links per person
+9) Out degree / in-degree
+
+RERUN EVERYTHING WITH #OCCURENCES SET 1 FOR EVERY UNIQUE PAIR of (FROM,TO) and (FROM,TIME)
+RERUN EVERYTHING, LIMITING ONE CONNECTION PER UNIQUE TWEET (PER TIME)
+
+TWITTER STATS: http://www.statisticbrain.com/twitter-statistics/
+
+
+
+
+1222718 self-tweets
+29950708 left
+25528735 with no toSN match in Nodes
+ 4421973 left
+
+mini-twitter is fairly equivalent to running a web crawler where we only look at outbound links to websites (or people) that we trust/see.
+
+
+characterization and patterns and communication
+
+Design Choices:
+
+annoyance in the fact that it takes minutes for queries to execute
+---How can this possibly scale
+
+user table and connection table (nodes and links) -- Twitter API is VERY restrictive
+only one connection for every pair of nodes (disregard frequency of communication)
+mini-twitter creator - GetTweets
+RETWEET: Connection between retweeter and tweeter, contents, also between tweeter and contents
+
+can have two connections - one for the first @, and another for a reply.
+
+Definition of connection - when a user actually connects, not when they tweet, but when the tweets are read (and replied to etc)
+
+filtered my tweets by geolocation -- using twitter4j they throttle my streaming (you have to have special permissions for firehose)
+
+one important factor that will definitely skew my results is that some twitter handles are controlled by bots who can modify their location on the fly as they see fit (see isomorphisms and equivocagent)
+
+spherical earth approximation -- radius used: 3958.75 [source???]
+--ideally we would want elevation as well
+
+rate limiting, connection limit exceeded problem occurring often
+the stream limitation is excessive!
+
+non-moving user assumption -- it does work out statistically
+
+Upside of using my machine -- its more awesome, it feels tangible
+downside -- not-always-on internet connection
+ALSO,
+"Too many login attempts in a short period of time.
+ Running too many copies of the same application authenticating with the same account name.
+Easy there, Turbo. Too many requests recently. Enhance your calm."
+https://dev.twitter.com/discussions/27717
+
+CONFIDENCE INTERVALS!!! http://en.wikipedia.org/wiki/CDF-based_nonparametric_confidence_interval
+
+
+----------log-normal distributions----------
+TOTAL) 3.0466, 2.8799                [2.855, 3.2373]   [2.7512, 3.0213]
+
+
+
+References:
+
+See Project Proposal for first reference
+spherical geolocation approximation
+ http://www.movable-type.co.uk/scripts/latlong.html
+
+
+Tweets per day: https://blog.twitter.com/2013/new-tweets-per-second-record-and-how
+TWITTER STATS: http://www.statisticbrain.com/twitter-statistics/
+
+Radius of Earth: http://trac.osgeo.org/openlayers/wiki/GreatCircleAlgorithms

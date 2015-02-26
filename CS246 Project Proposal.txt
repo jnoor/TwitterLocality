@@ -1,0 +1,16 @@
+CS246 Project Proposal
+
+Joseph Noor
+
+Locality in Social Networking (using Twitter)
+
+
+My project is focused around the aspect of analyzing social networking data. As we all know, massive amounts of data are being uploaded and stored every day. Social Networking sites like Facebook and Twitter are portals through which users are able to upload/post photos or text, as well as communicate with each other over (theoretically) any distance. In our lifetimes, the widespread explosion of Internet usage has led to global access to most of the Internet (barring totalitarian dictatorships). In this project, I aim to uncover the locality of social networking usage; that is, what is the utilization of the provided benefit of the Internet that places the entire world within a click's reach? The questions I would like to answer are as follows: how often do users communicate over long distances? What type of distribution is there over social-networking communication and distance? Is there some association between users that communicate over a large range? What locations (if they are somehow unique) especially utilize long-range communication? Finally, is there a temporal trend that exists (e.g. more often at certain hours of the day/week)? The specific semantics of these questions would need to be further flushed out, but the general idea is fairly simple to comprehend.
+
+Obviously, using data from Facebook and Whatsapp would provide the best possible analysis. Locality information is inherent in the data, and it would be fairly straightforward to answer many of these questions. However, due to the stringent time constraint and lack of access to this data, I am proposing to use Twitter's simple API to collect tweets. Since I do not have access to the type of massive datacenters that Twitter/Facebook/Google have to utilize -all- data available, I am planning to create a miniaturized randomly-sampled database of Twitter from a live stream to create "mini-Twitter." Then, I can answer all of my proposed questions on mini-Twitter, and attempt to extrapolate my results to all of Twitter and social networking sites in general.
+
+
+Current References:
+
+Paper: Users of the world, unite! The challenges and opportunities of Social Media
+https://www.uwsp.edu/pointeronline/Pages/articles/We-Are-the-Social-Media-Generation.aspx
